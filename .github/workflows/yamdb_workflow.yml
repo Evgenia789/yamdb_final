@@ -56,8 +56,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
+          stack_file_name: docker-compose.yaml
           script: |
-            sudo docker pull 83607rhfd/api_yamdb:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
